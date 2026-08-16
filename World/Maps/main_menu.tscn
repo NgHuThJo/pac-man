@@ -1,0 +1,74 @@
+[gd_scene format=3 uid="uid://52bgij52xouq"]
+
+[ext_resource type="Script" uid="uid://ptpjb2m40xqg" path="res://World/Maps/MainMenu.cs" id="1_xiora"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_735ph"]
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+
+[node name="MainMenu" type="Control" unique_id=342373620 node_paths=PackedStringArray("StartButton", "SettingsButton", "ExitButton")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+script = ExtResource("1_xiora")
+StartButton = NodePath("MarginContainer/PanelContainer/VBoxContainer/StartGame")
+SettingsButton = NodePath("MarginContainer/PanelContainer/VBoxContainer/Settings")
+ExitButton = NodePath("MarginContainer/PanelContainer/VBoxContainer/ExitGame")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1302068447]
+layout_mode = 0
+offset_right = 640.0
+offset_bottom = 360.0
+color = Color(0.19537827, 0.38137165, 0.46313465, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1628259623]
+layout_mode = 0
+offset_right = 640.0
+offset_bottom = 360.0
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_top = 64
+theme_override_constants/margin_right = 64
+theme_override_constants/margin_bottom = 64
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer" unique_id=213451955]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_735ph")
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/PanelContainer" unique_id=1455664356]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer" unique_id=2134596611]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer" unique_id=1466929892]
+layout_mode = 2
+size_flags_vertical = 3
+text = "River Raid"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="StartGame" type="Button" parent="MarginContainer/PanelContainer/VBoxContainer" unique_id=342190436]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Start Game"
+
+[node name="Settings" type="Button" parent="MarginContainer/PanelContainer/VBoxContainer" unique_id=901394836]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Settings"
+
+[node name="ExitGame" type="Button" parent="MarginContainer/PanelContainer/VBoxContainer" unique_id=974935146]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Exit Game"

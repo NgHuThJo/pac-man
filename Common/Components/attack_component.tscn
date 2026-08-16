@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://coqmop72sbfdd"]
+
+[ext_resource type="Script" uid="uid://nb58mjg23dva" path="res://Common/Components/AttackComponent.cs" id="1_7lwxp"]
+
+[node name="AttackComponent" type="Node2D" unique_id=780316501 node_paths=PackedStringArray("Cooldown", "Muzzle")]
+script = ExtResource("1_7lwxp")
+Cooldown = NodePath("Firerate")
+Muzzle = NodePath("Muzzle")
+
+[node name="Firerate" type="Timer" parent="." unique_id=1802697085]
+one_shot = true
+
+[node name="Muzzle" type="Marker2D" parent="." unique_id=616055395]
+gizmo_extents = 50.0

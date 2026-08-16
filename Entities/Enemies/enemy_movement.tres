@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="MovementData" format=3 uid="uid://cclhecsoeewsh"]
+
+[ext_resource type="Script" uid="uid://cvs6jj0ttra88" path="res://Resources/Movement/MovementData.cs" id="1_xueol"]
+
+[resource]
+script = ExtResource("1_xueol")
+Speed = 100.0
+metadata/_custom_type_script = "uid://cvs6jj0ttra88"

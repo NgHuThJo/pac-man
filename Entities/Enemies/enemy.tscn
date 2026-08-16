@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://b23k8gwh8204b"]
+
+[ext_resource type="Script" uid="uid://brpiasfp5k8x8" path="res://Entities/Enemies/Enemy.cs" id="1_6rqwt"]
+[ext_resource type="PackedScene" uid="uid://bdwy5b0fyeqoh" path="res://Common/Components/movement_component.tscn" id="1_7o3vr"]
+[ext_resource type="Resource" uid="uid://d2io2uv5rm6gu" path="res://Entities/Enemies/enemy_health.tres" id="2_ftopr"]
+[ext_resource type="PackedScene" uid="uid://b2spogtcacfgt" path="res://Common/Components/health_component.tscn" id="3_4jf10"]
+[ext_resource type="PackedScene" uid="uid://jhbg5d3errnr" path="res://Common/Components/hurtbox_component.tscn" id="3_6rqwt"]
+[ext_resource type="Resource" uid="uid://cclhecsoeewsh" path="res://Entities/Enemies/enemy_movement.tres" id="3_jk8g3"]
+[ext_resource type="Script" uid="uid://dki05byesg3ky" path="res://Entities/Enemies/EnemyData.cs" id="4_sawca"]
+
+[sub_resource type="Resource" id="Resource_uqk4q"]
+script = ExtResource("4_sawca")
+MovementData = ExtResource("3_jk8g3")
+HealthData = ExtResource("2_ftopr")
+metadata/_custom_type_script = "uid://dki05byesg3ky"
+
+[node name="Enemy" type="CharacterBody2D" unique_id=660254415 node_paths=PackedStringArray("Movement", "Health", "Hurtbox")]
+script = ExtResource("1_6rqwt")
+Movement = NodePath("MovementComponent")
+Health = NodePath("HealthComponent")
+Hurtbox = NodePath("HurtboxComponent")
+Data = SubResource("Resource_uqk4q")
+
+[node name="MovementComponent" parent="." unique_id=1756584285 node_paths=PackedStringArray("_body") instance=ExtResource("1_7o3vr")]
+_body = NodePath("..")
+
+[node name="HealthComponent" parent="." unique_id=318652840 node_paths=PackedStringArray("Hurtbox") instance=ExtResource("3_4jf10")]
+Hurtbox = NodePath("../HurtboxComponent")
+
+[node name="HurtboxComponent" parent="." unique_id=2078922390 instance=ExtResource("3_6rqwt")]

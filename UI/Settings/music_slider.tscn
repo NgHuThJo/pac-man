@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://b04i2kmh4mhd3"]
+
+
+[node name="HorizontalSlider" type="HBoxContainer" unique_id=172057590 node_paths=PackedStringArray("Label", "Slider")]
+Label = NodePath("Label")
+Slider = NodePath("Slider")
+MaxValue = 1.0
+Step = 0.001
+CurrentValue = 1.0
+
+[node name="Label" type="Label" parent="." unique_id=913166287]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "Placeholder"
+
+[node name="Slider" type="HSlider" parent="." unique_id=912126874]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4

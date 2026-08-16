@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://c7qr36ip78kly"]
+
+[ext_resource type="Script" uid="uid://w5l1jw1acdix" path="res://UI/HUD/ScoreDisplay.cs" id="1_21ked"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p23ne"]
+bg_color = Color(0, 0.7176471, 0.3647059, 0)
+
+[node name="ScoreDisplay" type="PanelContainer" unique_id=1501997612 node_paths=PackedStringArray("ScoreLabel")]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -41.0
+offset_top = -34.0
+offset_right = 41.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_p23ne")
+script = ExtResource("1_21ked")
+ScoreLabel = NodePath("MarginContainer/HBoxContainer/ScoreLabel")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=308338690]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=248045275]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer" unique_id=1789040725]
+layout_mode = 2
+text = "Score: "
+
+[node name="ScoreLabel" type="Label" parent="MarginContainer/HBoxContainer" unique_id=1360082654]
+layout_mode = 2

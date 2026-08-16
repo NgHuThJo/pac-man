@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://efdmaqt70r51"]
+
+[ext_resource type="Script" uid="uid://q05118wkscnl" path="res://Utilities/World/Levels/SpawnManager.cs" id="1_rob78"]
+
+[node name="SpawnManager" type="Node" unique_id=922656353]
+script = ExtResource("1_rob78")

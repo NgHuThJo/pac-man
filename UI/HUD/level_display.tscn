@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://bjkj60gdfc01j"]
+
+[ext_resource type="Script" uid="uid://clu7dbynhi572" path="res://UI/HUD/LevelDisplay.cs" id="1_b5ihp"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b5ihp"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[node name="LevelDisplay" type="PanelContainer" unique_id=671950397 node_paths=PackedStringArray("LevelLabel")]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -42.0
+offset_top = -34.0
+offset_right = 42.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_b5ihp")
+script = ExtResource("1_b5ihp")
+LevelLabel = NodePath("MarginContainer/HBoxContainer/CurrentLevel")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=559854421]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=1888556372]
+layout_mode = 2
+alignment = 1
+
+[node name="Level" type="Label" parent="MarginContainer/HBoxContainer" unique_id=708760124]
+layout_mode = 2
+text = "Level:  "
+
+[node name="CurrentLevel" type="Label" parent="MarginContainer/HBoxContainer" unique_id=1927396142]
+layout_mode = 2

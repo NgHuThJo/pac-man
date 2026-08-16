@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://da03r1ojbtkeh"]
+
+[ext_resource type="Script" uid="uid://bkq1bwa2fgku4" path="res://Common/Projectiles/Projectile.cs" id="1_0riap"]
+
+[node name="Projectile" type="CharacterBody2D" unique_id=1275833590]
+script = ExtResource("1_0riap")
+
+[node name="Lifetime" type="Timer" parent="." unique_id=999031822]
+one_shot = true
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="." unique_id=1461984824]

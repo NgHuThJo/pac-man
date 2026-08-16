@@ -1,0 +1,19 @@
+﻿Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pac-man", "Pac-man.csproj", "{D64B56FA-49FD-4787-BCB0-C5646659C26D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+	Debug|Any CPU = Debug|Any CPU
+	ExportDebug|Any CPU = ExportDebug|Any CPU
+	ExportRelease|Any CPU = ExportRelease|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D64B56FA-49FD-4787-BCB0-C5646659C26D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D64B56FA-49FD-4787-BCB0-C5646659C26D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D64B56FA-49FD-4787-BCB0-C5646659C26D}.ExportDebug|Any CPU.ActiveCfg = ExportDebug|Any CPU
+		{D64B56FA-49FD-4787-BCB0-C5646659C26D}.ExportDebug|Any CPU.Build.0 = ExportDebug|Any CPU
+		{D64B56FA-49FD-4787-BCB0-C5646659C26D}.ExportRelease|Any CPU.ActiveCfg = ExportRelease|Any CPU
+		{D64B56FA-49FD-4787-BCB0-C5646659C26D}.ExportRelease|Any CPU.Build.0 = ExportRelease|Any CPU
+	EndGlobalSection
+EndGlobal

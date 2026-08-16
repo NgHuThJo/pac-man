@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://y3pidwudiedy"]
+
+[ext_resource type="Script" uid="uid://n8ccyjng3ump" path="res://Utilities/Autoloads/TransitionManager.cs" id="1_bfxhb"]
+
+[node name="TransitionManager" type="CanvasLayer" unique_id=1860892739 node_paths=PackedStringArray("Background")]
+process_mode = 3
+script = ExtResource("1_bfxhb")
+Background = NodePath("ColorRect")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=749364524]
+visible = false
+modulate = Color(0, 0, 0, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://bbrjs7vcivhl0"]
+
+[ext_resource type="Script" uid="uid://bo3dytcn0wnoy" path="res://Utilities/Debug/DebugSettings.cs" id="1_hvhem"]
+
+[node name="DebugSettings" type="Node" unique_id=1143006990]
+script = ExtResource("1_hvhem")

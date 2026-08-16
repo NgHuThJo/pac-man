@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://cnd1vdwi1v266"]
+
+[ext_resource type="Script" uid="uid://de2qjqu7yig3n" path="res://Utilities/World/Levels/SpawnPoint.cs" id="1_olm64"]
+
+[node name="SpawnPoint" type="Node2D" unique_id=1538075597]
+script = ExtResource("1_olm64")
+
+[node name="Marker2D" type="Marker2D" parent="." unique_id=1333487578]
+gizmo_extents = 30.0

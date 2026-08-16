@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://c321wfxbhhglk"]
+
+[ext_resource type="Texture2D" uid="uid://dkxb0f22kuae3" path="res://Assets/Free Smoke Fx  Pixel 04.png" id="1_gn7q1"]
+[ext_resource type="Script" uid="uid://dqcxhvsl5h2rs" path="res://Common/Particles/Explosion.cs" id="2_fmyu2"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_fmyu2"]
+particles_animation = true
+particles_anim_h_frames = 8
+particles_anim_v_frames = 10
+particles_anim_loop = false
+
+[sub_resource type="Curve" id="Curve_p2442"]
+_limits = [0.0, 200.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_ghmls"]
+curve = SubResource("Curve_p2442")
+
+[sub_resource type="Gradient" id="Gradient_3ki4m"]
+offsets = PackedFloat32Array(0, 0.5, 1)
+colors = PackedColorArray(0.9607843, 1, 0.05882353, 1, 0.9607843, 0.50980395, 0.05882353, 1, 0.9607843, 0.047058824, 0.05882353, 1)
+metadata/_snap_enabled = true
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_40ijg"]
+gradient = SubResource("Gradient_3ki4m")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_oelnn"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 30.0
+gravity = Vector3(0, 0, 0)
+color_ramp = SubResource("GradientTexture1D_40ijg")
+anim_speed_min = 0.5
+anim_speed_max = 2.0
+anim_speed_curve = SubResource("CurveTexture_ghmls")
+
+[node name="Explosion" type="Node2D" unique_id=1601446809 node_paths=PackedStringArray("Particles")]
+script = ExtResource("2_fmyu2")
+Particles = NodePath("Particles")
+
+[node name="Particles" type="GPUParticles2D" parent="." unique_id=1047389169]
+material = SubResource("CanvasItemMaterial_fmyu2")
+emitting = false
+texture = ExtResource("1_gn7q1")
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+visibility_rect = Rect2(-640, -640.00006, 1280, 1280)
+process_material = SubResource("ParticleProcessMaterial_oelnn")

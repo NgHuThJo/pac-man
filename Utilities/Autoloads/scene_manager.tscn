@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://dauoyxolarnjr"]
+
+[ext_resource type="Script" uid="uid://c8ukk3npbdxri" path="res://Utilities/Autoloads/SceneManager.cs" id="1_p17li"]
+
+[node name="SceneManager" type="Node" unique_id=950685800]
+script = ExtResource("1_p17li")

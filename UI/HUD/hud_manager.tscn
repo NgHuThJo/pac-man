@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://dh7hvf1lg38oc"]
+
+[ext_resource type="Script" uid="uid://dqobc0fydy25" path="res://UI/HUD/HUDManager.cs" id="1_3qynt"]
+[ext_resource type="PackedScene" uid="uid://c7qr36ip78kly" path="res://UI/HUD/score_display.tscn" id="3_0fyxv"]
+[ext_resource type="PackedScene" uid="uid://bjkj60gdfc01j" path="res://UI/HUD/level_display.tscn" id="4_uecsm"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_13ndt"]
+bg_color = Color(0, 1, 1, 1)
+
+[node name="HUDManager" type="CanvasLayer" unique_id=2124855674 node_paths=PackedStringArray("FuelDisplay", "ScoreDisplay", "LevelDisplay")]
+script = ExtResource("1_3qynt")
+FuelDisplay = NodePath("PanelContainer/MarginContainer2/HBoxContainer/FuelDisplay")
+ScoreDisplay = NodePath("PanelContainer/MarginContainer2/HBoxContainer/ScoreDisplay")
+LevelDisplay = NodePath("PanelContainer/MarginContainer2/HBoxContainer/LevelDisplay")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1297251936]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -34.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_13ndt")
+
+[node name="MarginContainer2" type="MarginContainer" parent="PanelContainer" unique_id=137675792]
+layout_mode = 2
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer2" unique_id=1622776969]
+layout_mode = 2
+
+[node name="ScoreDisplay" parent="PanelContainer/MarginContainer2/HBoxContainer" unique_id=1501997612 instance=ExtResource("3_0fyxv")]
+layout_mode = 2
+size_flags_horizontal = 3
+
+
+[node name="LevelDisplay" parent="PanelContainer/MarginContainer2/HBoxContainer" unique_id=570285467 instance=ExtResource("4_uecsm")]
+layout_mode = 2
+size_flags_horizontal = 3

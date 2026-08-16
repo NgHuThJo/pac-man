@@ -1,0 +1,73 @@
+[gd_scene format=3 uid="uid://d3seefhkbo7ky"]
+
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7qu41"]
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+
+[node name="GameoverScreen" type="PanelContainer" unique_id=726103778 node_paths=PackedStringArray("RestartButton", "MainMenuButton", "Highscore", "HighestLevel")]
+process_mode = 3
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 50.0
+offset_top = 50.0
+offset_right = -50.0
+offset_bottom = -50.0
+grow_horizontal = 2
+grow_vertical = 2
+RestartButton = NodePath("PanelContainer/MarginContainer/VBoxContainer/Restart")
+MainMenuButton = NodePath("PanelContainer/MarginContainer/VBoxContainer/MainMenu")
+Highscore = NodePath("PanelContainer/MarginContainer/VBoxContainer/Highscore")
+HighestLevel = NodePath("PanelContainer/MarginContainer/VBoxContainer/HighestLevel")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1630290659]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_7qu41")
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer" unique_id=1337977866]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=413930129]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer" unique_id=2032475937]
+layout_mode = 2
+
+[node name="GameoverLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1788579749]
+layout_mode = 2
+size_flags_vertical = 6
+text = "Gameover"
+horizontal_alignment = 1
+
+[node name="Highscore" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=640179941]
+layout_mode = 2
+size_flags_vertical = 6
+text = "Some placeholder text"
+horizontal_alignment = 1
+
+[node name="HighestLevel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1747174674]
+layout_mode = 2
+size_flags_vertical = 6
+text = "Some placeholder text"
+horizontal_alignment = 1
+
+[node name="Restart" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=2133840754]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Restart"
+
+[node name="MainMenu" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=900370491]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Go back to main menu"

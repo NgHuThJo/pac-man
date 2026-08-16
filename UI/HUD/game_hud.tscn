@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://c24fivqimurf6"]
+
+[ext_resource type="PackedScene" uid="uid://c7qr36ip78kly" path="res://UI/HUD/score_display.tscn" id="1_yp3c2"]
+[ext_resource type="PackedScene" uid="uid://bjkj60gdfc01j" path="res://UI/HUD/level_display.tscn" id="3_w6fa4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iw8wp"]
+bg_color = Color(0.02745098, 0.74509805, 0.19607843, 1)
+
+[node name="GameHud" type="PanelContainer" unique_id=1770377647]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_iw8wp")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=673289346]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=751791530]
+layout_mode = 2
+
+[node name="ScoreDisplay" parent="MarginContainer/HBoxContainer" unique_id=1501997612 instance=ExtResource("1_yp3c2")]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="LevelDisplay" parent="MarginContainer/HBoxContainer" unique_id=1810973329 instance=ExtResource("3_w6fa4")]
+layout_mode = 2
+size_flags_horizontal = 3
+script = null

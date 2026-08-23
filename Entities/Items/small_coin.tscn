@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://6tv3t8myj3c2"]
+
+[ext_resource type="Script" uid="uid://dptt7aomcijd6" path="res://Entities/Items/SmallCoin.cs" id="1_54dja"]
+[ext_resource type="Texture2D" uid="uid://b1mgve1bf5i8y" path="res://Assets/visual/PacManAssets-Items.png" id="1_wxkso"]
+[ext_resource type="AudioStream" uid="uid://b6kg1rlj5qjak" path="res://Assets/sound/eat_dot_0.wav" id="3_aindf"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_w71yf"]
+radius = 3.1622777
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vyppc"]
+radius = 3.1622777
+
+[node name="SmallCoin" type="StaticBody2D" unique_id=989247837]
+script = ExtResource("1_54dja")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1644844506]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=939034237]
+shape = SubResource("CircleShape2D_w71yf")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1440337051]
+texture = ExtResource("1_wxkso")
+region_enabled = true
+region_rect = Rect2(0, 16, 16, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1687282343]
+shape = SubResource("CircleShape2D_vyppc")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer" parent="." unique_id=71643598]
+stream = ExtResource("3_aindf")

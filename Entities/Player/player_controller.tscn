@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://640n67d00vm7"]
+
+[ext_resource type="Script" uid="uid://iv01a245ev0s" path="res://Entities/Player/PlayerController.cs" id="1_gtamu"]
+
+[node name="PlayerController" type="Node" unique_id=156435625]
+script = ExtResource("1_gtamu")

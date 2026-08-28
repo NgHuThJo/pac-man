@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://jhbg5d3errnr"]
 
-[ext_resource type="Script" uid="uid://xe2l0sjreqxf" path="res://Common/Components/HurtboxComponent.cs" id="1_prlfh"]
+[ext_resource type="Script" uid="uid://b5a7q3wftmh61" path="res://Common/Components/AreaBoxes/Hurtbox/HurtboxComponent.cs" id="1_w1glj"]
 
 [node name="HurtboxComponent" type="Area2D" unique_id=2078922390]
-script = ExtResource("1_prlfh")
+script = ExtResource("1_w1glj")

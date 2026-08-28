@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://c8ouknimlrhi0"]
+
+[ext_resource type="Script" uid="uid://dp1k58vx2b86d" path="res://Entities/Player/Arrow.cs" id="1_ph282"]
+[ext_resource type="Texture2D" uid="uid://x2a80l6x0s63" path="res://Assets/visual/pacman-arrow.png" id="1_qu2u6"]
+
+[node name="Arrow" type="Node2D" unique_id=743525806 node_paths=PackedStringArray("Ray", "Sprite")]
+script = ExtResource("1_ph282")
+Ray = NodePath("")
+Sprite = NodePath("Sprite2D")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1660191910]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_qu2u6")
+flip_h = true

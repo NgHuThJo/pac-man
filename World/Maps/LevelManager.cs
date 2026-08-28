@@ -18,10 +18,7 @@ public partial class LevelManager : Node, ISaveable
     public int Score { get; private set; } = 0;
     public int Level { get; private set; } = 1;
 
-    public override void _EnterTree()
-    {
-        Player.SetSpawnContainer(this);
-    }
+    public override void _EnterTree() { }
 
     public override void _Ready()
     {

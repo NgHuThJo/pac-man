@@ -9,9 +9,26 @@ public partial class PlayerController : CharacterController
     {
         get
         {
-            var direction = Input.GetVector("move_left", "move_right", "move_up", "move_down");
+            Vector2 direction = Vector2.Zero;
 
-            return new() { X = direction.X, Y = direction.Y };
+            if (Input.IsActionPressed("move_left"))
+            {
+                direction = Vector2.Left;
+            }
+            else if (Input.IsActionPressed("move_right"))
+            {
+                direction = Vector2.Right;
+            }
+            else if (Input.IsActionPressed("move_up"))
+            {
+                direction = Vector2.Up;
+            }
+            else if (Input.IsActionPressed("move_down"))
+            {
+                direction = Vector2.Down;
+            }
+
+            return direction;
         }
     }
 }

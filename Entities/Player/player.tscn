@@ -30,8 +30,8 @@ MovementData = SubResource("Resource_ebkce")
 atlas = ExtResource("3_5c2io")
 region = Rect2(0, 0, 128, 96)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_5c2io"]
-radius = 9.333334
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t7bsh"]
+size = Vector2(21, 21)
 
 [sub_resource type="Animation" id="Animation_r8fok"]
 length = 0.5
@@ -194,17 +194,18 @@ states/move_right/position = Vector2(417.61108, 279.5548)
 transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_vskfa"), "idle", "move_left", SubResource("AnimationNodeStateMachineTransition_pjcup"), "move_left", "idle", SubResource("AnimationNodeStateMachineTransition_0poeq"), "idle", "move_right", SubResource("AnimationNodeStateMachineTransition_ppdlg"), "move_right", "idle", SubResource("AnimationNodeStateMachineTransition_v7p16"), "move_left", "move_right", SubResource("AnimationNodeStateMachineTransition_a8wow"), "move_right", "move_left", SubResource("AnimationNodeStateMachineTransition_avsg8")]
 graph_offset = Vector2(18.591402, 14.554792)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_w71yf"]
-radius = 9.333334
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wgnfr"]
+size = Vector2(21, 21)
 
-[node name="Player" type="CharacterBody2D" unique_id=1228520695 node_paths=PackedStringArray("Controller", "Health", "Movement", "Hurtbox", "Arrow")]
+[node name="Player" type="CharacterBody2D" unique_id=1228520695 node_paths=PackedStringArray("Controller", "Health", "Movement", "Hurtbox", "Ray", "Arrow")]
 scale = Vector2(0.75, 0.75)
-collision_mask = 14
+collision_mask = 6
 script = ExtResource("1_3uyv8")
 Controller = NodePath("PlayerController")
 Health = NodePath("HealthComponent")
 Movement = NodePath("MovementComponent")
 Hurtbox = NodePath("HurtboxComponent")
+Ray = NodePath("MovementRay")
 Arrow = NodePath("Arrow")
 Data = SubResource("Resource_xr8lj")
 
@@ -215,7 +216,7 @@ hframes = 4
 vframes = 3
 
 [node name="PlayerCollision" type="CollisionShape2D" parent="." unique_id=358217234]
-shape = SubResource("CircleShape2D_5c2io")
+shape = SubResource("RectangleShape2D_t7bsh")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1383790429]
 libraries/ = SubResource("AnimationLibrary_0poeq")
@@ -236,9 +237,11 @@ _body = NodePath("..")
 [node name="HurtboxComponent" parent="." unique_id=2078922390 instance=ExtResource("6_iplt1")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent" unique_id=2041540694]
-shape = SubResource("CircleShape2D_w71yf")
+shape = SubResource("RectangleShape2D_wgnfr")
 
 [node name="Arrow" parent="." unique_id=743525806 instance=ExtResource("10_x1y6q")]
 position = Vector2(21.333334, 0)
 
 [node name="MovementRay" type="RayCast2D" parent="." unique_id=425590887]
+target_position = Vector2(24, 0)
+collision_mask = 2

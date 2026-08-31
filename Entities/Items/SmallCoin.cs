@@ -17,6 +17,7 @@ public partial class SmallCoin : StaticBody2D
 
     public void OnBodyEntered(Node2D area)
     {
+        GD.Print("Coin intersection");
         Sfx.Play();
         QueueFree();
     }

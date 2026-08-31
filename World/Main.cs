@@ -3,9 +3,9 @@ using Game.Utilities.Loaded;
 using Game.Utilities.World.Maps;
 using Godot;
 
-namespace Game.Utilities.World;
+namespace Game.World;
 
-public partial class Game : Node
+public partial class Main : Node
 {
     public override void _Ready()
     {

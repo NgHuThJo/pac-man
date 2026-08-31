@@ -10,19 +10,21 @@ using Utils;
 
 namespace Game.Utilities.World.Maps;
 
-public partial class LevelManager : Node, ISaveable
+public partial class Level : Node, ISaveable
 {
     [Export]
     public Player Player { get; set; }
 
+    [Export]
+    public TileMapLayer Map { get; set; }
+
     public int Score { get; private set; } = 0;
-    public int Level { get; private set; } = 1;
 
     public override void _EnterTree() { }
 
     public override void _Ready()
     {
-        UIManager.Instance.HUDManager.ResetHUD(Score, Level);
+        UIManager.Instance.HUDManager.ResetHUD(Score);
         UIManager.Instance.HUDManager.ShowHUD();
 
         EventBus.Instance.EnemyDied += OnEnemyDied;
@@ -59,11 +61,6 @@ public partial class LevelManager : Node, ISaveable
         Score += score;
     }
 
-    public void IncrementLevel()
-    {
-        Level++;
-    }
-
     public void ShowGameoverScreen()
     {
         SaveManager.Instance.Save();
@@ -78,10 +75,6 @@ public partial class LevelManager : Node, ISaveable
         SaveManager.Instance.GameSaveState.Highscore = Mathf.Max(
             SaveManager.Instance.GameSaveState.Highscore,
             Score
-        );
-        SaveManager.Instance.GameSaveState.HighestLevel = Mathf.Max(
-            SaveManager.Instance.GameSaveState.HighestLevel,
-            Level
         );
     }
 }

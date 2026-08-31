@@ -1,4 +1,3 @@
-using System.Linq.Expressions;
 using Game.Common.StateMachines;
 using Godot;
 
@@ -33,10 +32,11 @@ public class PlayerIdleState(Player player, PlayerStateMachine stateMachine)
 {
     public override void PhysicsUpdate(double delta)
     {
-        Player.CurrentMovementDirection = Player.Controller.MovementDirection;
+        var direction = Player.Controller.MovementDirection;
 
-        if (Player.CurrentMovementDirection != Vector2.Zero)
+        if (direction != Vector2.Zero)
         {
+            Player.CurrentMovementDirection = direction;
             StateMachine.ChangeState(new PlayerMovingState(Player, StateMachine));
         }
     }
@@ -47,30 +47,27 @@ public class PlayerMovingState(Player player, PlayerStateMachine stateMachine)
 {
     public override void PhysicsUpdate(double delta)
     {
-        Player.NextMovementDirection = Player.Controller.MovementDirection;
-        Player.Arrow.TurnArrow(Player.NextMovementDirection);
-        var canMoveInDirection = Player.Arrow.CanMoveInDirection();
-
-        GD.Print("current velocity before applying physics ", Player.Velocity);
-
-        if (Player.CurrentMovementDirection == Vector2.Zero)
+        if (Player.Controller.MovementDirection != Vector2.Zero)
         {
-            if (canMoveInDirection)
-            {
-                StateMachine.ChangeState(new PlayerIdleState(Player, stateMachine));
-                return;
-            }
-
-            Player.CurrentMovementDirection = Player.NextMovementDirection;
+            Player.NextMovementDirection = Player.Controller.MovementDirection;
         }
-        if (canMoveInDirection)
+
+        if (Player.CanMoveInDirection(Player.NextMovementDirection))
         {
             Player.CurrentMovementDirection = Player.NextMovementDirection;
+            Player.NextMovementDirection = Vector2.Zero;
+            Player.TurnPlayer(Player.CurrentMovementDirection);
+        }
+
+        if (!Player.CanMoveInDirection(Player.CurrentMovementDirection))
+        {
+            Player.CurrentMovementDirection = Vector2.Zero;
+            Player.Movement.ApplyVelocity(Vector2.Zero);
+            StateMachine.ChangeState(new PlayerIdleState(Player, StateMachine));
+            return;
         }
 
         Player.Movement.ApplyVelocity(Player.CurrentMovementDirection);
-
-        GD.Print("current velocity after applying physics ", Player.Velocity);
 
         Player.MoveAndSlide();
     }

@@ -31,6 +31,16 @@ public partial class Player : CharacterBody2D
     public PlayerStateMachine StateMachine { get; init; } = new();
     public Vector2 NextMovementDirection { get; set; } = Vector2.Zero;
     public Vector2 CurrentMovementDirection { get; set; } = Vector2.Zero;
+    public float RayLength { get; init; } = 24f;
+
+    public Dictionary<Vector2, float> RotationMap { get; init; } =
+        new()
+        {
+            { Vector2.Up, 270 },
+            { Vector2.Right, 0 },
+            { Vector2.Down, 90 },
+            { Vector2.Left, 180 },
+        };
 
     public override void _Ready()
     {
@@ -57,5 +67,28 @@ public partial class Player : CharacterBody2D
     {
         Health.Initialize(Data.HealthData);
         Movement.Initialize(Data.MovementData);
+    }
+
+    public bool CanMoveInDirection(Vector2 direction)
+    {
+        if (direction == Vector2.Zero)
+        {
+            return false;
+        }
+
+        Ray.TargetPosition = direction.Normalized() * RayLength;
+        Ray.ForceRaycastUpdate();
+
+        return !Ray.IsColliding();
+    }
+
+    public void TurnPlayer(Vector2 direction)
+    {
+        if (direction == Vector2.Zero)
+        {
+            return;
+        }
+
+        RotationDegrees = RotationMap[direction];
     }
 }

@@ -8,9 +8,6 @@ public partial class HUDManager : CanvasLayer
     [Export]
     public ScoreDisplay ScoreDisplay { get; private set; }
 
-    [Export]
-    public LevelDisplay LevelDisplay { get; private set; }
-
     public override void _Ready()
     {
         HideHUD();
@@ -26,9 +23,8 @@ public partial class HUDManager : CanvasLayer
         Hide();
     }
 
-    public void ResetHUD(int score, int level)
+    public void ResetHUD(int score)
     {
         ScoreDisplay.SetScore(score);
-        LevelDisplay.SetLevel(level);
     }
 }

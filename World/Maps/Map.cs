@@ -10,15 +10,15 @@ public enum CellType
 
 public partial class Map : TileMapLayer
 {
-    public const int GRID_WIDTH = 22;
-    public const int GRID_HEIGHT = 28;
+    public const int GRID_WIDTH = 28;
+    public const int GRID_HEIGHT = 30;
     public const int CELL_SIZE = 16;
 
     public static bool IsInsideGrid(Vector2I position)
     {
         var (x, y) = position;
 
-        return 0 <= x && x < GRID_WIDTH && 0 <= y && y < GRID_HEIGHT;
+        return 1 <= x && x < GRID_WIDTH + 1 && 8 <= y && y < GRID_HEIGHT + 1;
     }
 
     public static Vector2 SnapToGrid(Vector2 direction)
@@ -66,10 +66,5 @@ public partial class Map : TileMapLayer
         }
 
         return Vector2.Zero;
-    }
-
-    public void Turn(Vector2 currentPosition)
-    {
-        var snapped = SnapToGrid(currentPosition);
     }
 }

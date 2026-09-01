@@ -31,7 +31,7 @@ atlas = ExtResource("3_5c2io")
 region = Rect2(0, 0, 128, 96)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t7bsh"]
-size = Vector2(21, 21)
+size = Vector2(16, 16)
 
 [sub_resource type="Animation" id="Animation_r8fok"]
 length = 0.5
@@ -195,9 +195,9 @@ transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition
 graph_offset = Vector2(18.591402, 14.554792)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wgnfr"]
-size = Vector2(21, 21)
+size = Vector2(16, 16)
 
-[node name="Player" type="CharacterBody2D" unique_id=1228520695 node_paths=PackedStringArray("Controller", "Health", "Movement", "Hurtbox", "Ray", "Arrow")]
+[node name="Player" type="CharacterBody2D" unique_id=1228520695 node_paths=PackedStringArray("Controller", "Health", "Movement", "Hurtbox", "DirectionRays", "Arrow")]
 scale = Vector2(0.75, 0.75)
 collision_mask = 6
 script = ExtResource("1_3uyv8")
@@ -205,7 +205,7 @@ Controller = NodePath("PlayerController")
 Health = NodePath("HealthComponent")
 Movement = NodePath("MovementComponent")
 Hurtbox = NodePath("HurtboxComponent")
-Ray = NodePath("MovementRay")
+DirectionRays = NodePath("DirectionRays")
 Arrow = NodePath("Arrow")
 Data = SubResource("Resource_xr8lj")
 
@@ -242,6 +242,14 @@ shape = SubResource("RectangleShape2D_wgnfr")
 [node name="Arrow" parent="." unique_id=743525806 instance=ExtResource("10_x1y6q")]
 position = Vector2(21.333334, 0)
 
-[node name="MovementRay" type="RayCast2D" parent="." unique_id=425590887]
+[node name="DirectionRays" type="Node2D" parent="." unique_id=126440042]
+
+[node name="MovementRay1" type="RayCast2D" parent="DirectionRays" unique_id=425590887]
+position = Vector2(8.000002, 8)
+target_position = Vector2(24, 0)
+collision_mask = 2
+
+[node name="MovementRay2" type="RayCast2D" parent="DirectionRays" unique_id=1366296942]
+position = Vector2(8, -8)
 target_position = Vector2(24, 0)
 collision_mask = 2

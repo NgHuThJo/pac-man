@@ -1,7 +1,9 @@
 using System.Collections.Generic;
+using System.Linq;
 using Game.Common.Components;
 using Game.Common.Components.AreaBoxes.Hurtbox;
 using Game.Common.Components.Health;
+using Game.World.Maps;
 using Godot;
 
 namespace Game.Entities.Player;
@@ -21,10 +23,13 @@ public partial class Player : CharacterBody2D
     public HurtboxComponent Hurtbox { get; private set; }
 
     [Export]
-    public RayCast2D Ray { get; private set; }
+    public Node2D DirectionRays { get; private set; }
 
     [Export]
     public Arrow Arrow { get; private set; }
+
+    [Export]
+    public Map Map { get; private set; }
 
     [Export]
     public PlayerData Data { get; private set; }
@@ -76,19 +81,24 @@ public partial class Player : CharacterBody2D
             return false;
         }
 
-        Ray.TargetPosition = direction.Normalized() * RayLength;
-        Ray.ForceRaycastUpdate();
+        foreach (var ray in DirectionRays.GetChildren().Cast<RayCast2D>())
+        {
+            if (ray.IsColliding())
+            {
+                return false;
+            }
+        }
 
-        return !Ray.IsColliding();
+        return true;
     }
 
-    public void TurnPlayer(Vector2 direction)
+    public void Turn(Vector2 direction)
     {
         if (direction == Vector2.Zero)
         {
             return;
         }
 
-        RotationDegrees = RotationMap[direction];
+        DirectionRays.RotationDegrees = RotationMap[direction];
     }
 }

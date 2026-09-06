@@ -7,7 +7,8 @@ public enum NodeStatus
     Running,
 };
 
-public abstract class BehaviorNode
+public abstract class BehaviorNode<T>
+    where T : AIContext
 {
-    public abstract void Tick(AIContext context);
+    public abstract NodeStatus Tick(T context, double delta);
 }

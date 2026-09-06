@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://dptt7aomcijd6" path="res://Entities/Items/SmallCoin.cs" id="1_54dja"]
 [ext_resource type="Texture2D" uid="uid://b1mgve1bf5i8y" path="res://Assets/visual/PacManAssets-Items.png" id="1_wxkso"]
-[ext_resource type="AudioStream" uid="uid://b6kg1rlj5qjak" path="res://Assets/sound/eat_dot_0.wav" id="3_aindf"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_w71yf"]
 radius = 3.1622777
@@ -15,7 +14,7 @@ collision_layer = 8
 collision_mask = 0
 script = ExtResource("1_54dja")
 DetectionBox = NodePath("Area2D")
-Sfx = NodePath("AudioStreamPlayer2D")
+Sfx = NodePath("")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1644844506]
 collision_layer = 8
@@ -30,6 +29,3 @@ region_rect = Rect2(0, 16, 16, 16)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1687282343]
 shape = SubResource("CircleShape2D_vyppc")
-
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer" parent="." unique_id=71643598]
-stream = ExtResource("3_aindf")

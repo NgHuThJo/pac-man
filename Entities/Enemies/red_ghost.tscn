@@ -1,0 +1,90 @@
+[gd_scene format=3 uid="uid://b6guiqsg5infp"]
+
+[ext_resource type="Script" uid="uid://dgs4umnhxf7eb" path="res://Entities/Enemies/RedGhost.cs" id="1_uqtrf"]
+[ext_resource type="Texture2D" uid="uid://jdb8ivibkh5d" path="res://Assets/visual/PacManAssets-Ghosts.png" id="1_vucf1"]
+[ext_resource type="Script" uid="uid://cvs6jj0ttra88" path="res://Resources/Movement/MovementData.cs" id="2_xrsnj"]
+[ext_resource type="Script" uid="uid://dki05byesg3ky" path="res://Entities/Enemies/EnemyData.cs" id="3_tsdfc"]
+[ext_resource type="PackedScene" uid="uid://bdwy5b0fyeqoh" path="res://Common/Components/movement_component.tscn" id="5_oyqcg"]
+
+[sub_resource type="Resource" id="Resource_w71yf"]
+script = ExtResource("2_xrsnj")
+Speed = 100.0
+metadata/_custom_type_script = "uid://cvs6jj0ttra88"
+
+[sub_resource type="Resource" id="Resource_vyppc"]
+script = ExtResource("3_tsdfc")
+MovementData = SubResource("Resource_w71yf")
+metadata/_custom_type_script = "uid://dki05byesg3ky"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xrsnj"]
+radius = 4.0
+
+[sub_resource type="Animation" id="Animation_uqtrf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_14cjb"]
+resource_name = "idle"
+length = 0.4
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jiogr"]
+_data = {
+&"RESET": SubResource("Animation_uqtrf"),
+&"idle": SubResource("Animation_14cjb")
+}
+
+[node name="RedGhost" type="CharacterBody2D" unique_id=516164900 node_paths=PackedStringArray("Navigation", "Movement")]
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("1_uqtrf")
+Navigation = NodePath("NavigationAgent2D")
+Movement = NodePath("MovementComponent")
+Data = SubResource("Resource_vyppc")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=477937542]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_vucf1")
+hframes = 4
+vframes = 10
+region_rect = Rect2(0, 0, 128, 32)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1741521572]
+shape = SubResource("CircleShape2D_xrsnj")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1914999667]
+libraries/ = SubResource("AnimationLibrary_jiogr")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=1438612711]
+path_desired_distance = 3.0
+debug_enabled = true
+debug_use_custom = true
+debug_path_custom_color = Color(1, 0.26666668, 0.40392157, 1)
+debug_path_custom_line_width = 1.0
+
+[node name="MovementComponent" parent="." unique_id=1756584285 node_paths=PackedStringArray("_body") instance=ExtResource("5_oyqcg")]
+_body = NodePath("..")

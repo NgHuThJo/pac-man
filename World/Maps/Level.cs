@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Game.Common.GameEvents.Global;
 using Game.Common.Persistence;
 using Game.Entities.Enemies;
@@ -17,15 +18,19 @@ public partial class Level : Node, ISaveable
 
     [Export]
     public TileMapLayer Map { get; set; }
-
     public int Score { get; private set; } = 0;
-
-    public override void _EnterTree() { }
+    public List<Vector2I> GateCoords { get; init; } = [new(14, 20), new(15, 20)];
 
     public override void _Ready()
     {
-        UIManager.Instance.HUDManager.ResetHUD(Score);
-        UIManager.Instance.HUDManager.ShowHUD();
+        foreach (var cellCoord in GateCoords)
+        {
+            Map.SetCell(cellCoord);
+            GD.Print($"Cell {cellCoord} deleted");
+        }
+
+        // UIManager.Instance.HUDManager.ResetHUD(Score);
+        // UIManager.Instance.HUDManager.ShowHUD();
 
         EventBus.Instance.EnemyDied += OnEnemyDied;
     }

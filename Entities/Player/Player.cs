@@ -26,7 +26,7 @@ public partial class Player : CharacterBody2D
     public Node2D DirectionRays { get; private set; }
 
     [Export]
-    public Arrow Arrow { get; private set; }
+    public Node2D NextDirectionDetector { get; private set; }
 
     [Export]
     public Map Map { get; private set; }
@@ -99,6 +99,6 @@ public partial class Player : CharacterBody2D
             return;
         }
 
-        DirectionRays.RotationDegrees = RotationMap[direction];
+        NextDirectionDetector.RotationDegrees = RotationMap[direction];
     }
 }

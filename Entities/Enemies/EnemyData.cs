@@ -1,4 +1,3 @@
-using Game.Resources.Health;
 using Game.Resources.Movement;
 using Godot;
 
@@ -11,7 +10,7 @@ public partial class EnemyData : Resource
     public MovementData MovementData { get; private set; }
 
     [Export]
-    public HealthData HealthData { get; private set; }
+    public Vector2I ScatterPosition { get; private set; }
 
     [Export]
     public int Points { get; private set; }

@@ -27,7 +27,6 @@ public partial class Enemy : CharacterBody2D
     public override void _Ready()
     {
         Movement.Initialize(Data.MovementData);
-        Health.Initialize(Data.HealthData);
 
         Health.NoHealthLeft += OnNoHealthLeft;
     }

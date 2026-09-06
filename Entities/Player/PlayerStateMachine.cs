@@ -66,7 +66,6 @@ public class PlayerMovingState(Player player, PlayerStateMachine stateMachine)
         if (Player.Velocity == Vector2.Zero)
         {
             Player.CurrentMovementDirection = Vector2.Zero;
-            Player.Movement.ApplyVelocity(Vector2.Zero);
             StateMachine.ChangeState(new PlayerIdleState(Player, StateMachine));
             return;
         }

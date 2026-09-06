@@ -665,6 +665,7 @@ texture = ExtResource("1_jpunj")
 10:12/0 = 0
 10:12/0/terrain_set = 0
 9:5/0 = 0
+10:6/0 = 0
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_aqmwi"]
 scenes/1/scene = ExtResource("2_sahjb")

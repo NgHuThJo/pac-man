@@ -80,7 +80,7 @@ shape = SubResource("CircleShape2D_xrsnj")
 libraries/ = SubResource("AnimationLibrary_jiogr")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=1438612711]
-path_desired_distance = 3.0
+path_desired_distance = 5.0
 debug_enabled = true
 debug_use_custom = true
 debug_path_custom_color = Color(1, 0.26666668, 0.40392157, 1)

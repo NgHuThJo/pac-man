@@ -6,6 +6,7 @@ using Game.Entities.Player;
 using Game.UI;
 using Game.Utilities.Autoloads;
 using Game.Utilities.Loaded;
+using Game.World.Maps;
 using Godot;
 using Utils;
 
@@ -18,6 +19,12 @@ public partial class Level : Node, ISaveable
 
     [Export]
     public TileMapLayer Map { get; set; }
+
+    [Export]
+    public TeleportArea LeftArea { get; set; }
+
+    [Export]
+    public TeleportArea RightArea { get; set; }
     public int Score { get; private set; } = 0;
     public List<Vector2I> GateCoords { get; init; } = [new(14, 20), new(15, 20)];
 

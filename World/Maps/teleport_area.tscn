@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://cg6expvvrq8jk"]
+
+[ext_resource type="Script" uid="uid://dv08b8r1gs4n7" path="res://World/Maps/TeleportArea.cs" id="1_vkak5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w71yf"]
+size = Vector2(16, 48)
+
+[node name="TeleportArea" type="Area2D" unique_id=2098978087 node_paths=PackedStringArray("SpawnPosition")]
+script = ExtResource("1_vkak5")
+SpawnPosition = NodePath("Marker2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=735365965]
+shape = SubResource("RectangleShape2D_w71yf")
+
+[node name="Marker2D" type="Marker2D" parent="." unique_id=1723552943]
+position = Vector2(16, 0)

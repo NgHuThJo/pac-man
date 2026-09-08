@@ -1,3 +1,5 @@
+namespace Game.Utilities.Autoloads;
+
 public record GameSaveState
 {
     public int Highscore { get; set; } = 0;

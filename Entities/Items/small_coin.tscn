@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dptt7aomcijd6" path="res://Entities/Items/SmallCoin.cs" id="1_54dja"]
 [ext_resource type="Texture2D" uid="uid://b1mgve1bf5i8y" path="res://Assets/visual/PacManAssets-Items.png" id="1_wxkso"]
+[ext_resource type="Resource" uid="uid://ddx21k4bnlpp2" path="res://Entities/Items/small_coin_data.tres" id="2_aindf"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_w71yf"]
 radius = 3.1622777
@@ -9,12 +10,12 @@ radius = 3.1622777
 [sub_resource type="CircleShape2D" id="CircleShape2D_vyppc"]
 radius = 3.1622777
 
-[node name="SmallCoin" type="StaticBody2D" unique_id=989247837 node_paths=PackedStringArray("DetectionBox", "Sfx")]
+[node name="SmallCoin" type="StaticBody2D" unique_id=989247837 node_paths=PackedStringArray("DetectionBox") groups=["SmallCoins"]]
 collision_layer = 8
 collision_mask = 0
 script = ExtResource("1_54dja")
 DetectionBox = NodePath("Area2D")
-Sfx = NodePath("")
+Data = ExtResource("2_aindf")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1644844506]
 collision_layer = 8

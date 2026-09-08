@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://ddx21k4bnlpp2"]
+
+[ext_resource type="Script" uid="uid://cohxard4f7k1o" path="res://Entities/Items/ItemData.cs" id="1_dagq5"]
+
+[resource]
+script = ExtResource("1_dagq5")
+Points = 10
+metadata/_custom_type_script = "uid://cohxard4f7k1o"

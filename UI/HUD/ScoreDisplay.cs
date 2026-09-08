@@ -28,5 +28,6 @@ public partial class ScoreDisplay : Control
     public void OnScoreChanged(ScoreChanged context)
     {
         ScoreLabel.Text = context.Score.ToString();
+        GD.Print("Score label updated, ", ScoreLabel.Text);
     }
 }

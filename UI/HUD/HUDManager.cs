@@ -8,10 +8,7 @@ public partial class HUDManager : CanvasLayer
     [Export]
     public ScoreDisplay ScoreDisplay { get; private set; }
 
-    public override void _Ready()
-    {
-        HideHUD();
-    }
+    public override void _Ready() { }
 
     public void ShowHUD()
     {

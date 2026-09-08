@@ -8,9 +8,6 @@ namespace Game.UI;
 public partial class UIManager : Node
 {
     [Export]
-    public HUDManager HUDManager { get; private set; }
-
-    [Export]
     public CanvasLayer UIScreenContainer { get; set; }
     public static UIManager Instance { get; private set; }
 

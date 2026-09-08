@@ -5,6 +5,8 @@
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p23ne"]
 bg_color = Color(0, 0.7176471, 0.3647059, 0)
 
+[sub_resource type="LabelSettings" id="LabelSettings_21ked"]
+
 [node name="ScoreDisplay" type="PanelContainer" unique_id=1501997612 node_paths=PackedStringArray("ScoreLabel")]
 anchors_preset = 7
 anchor_left = 0.5
@@ -18,18 +20,19 @@ grow_horizontal = 2
 grow_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_p23ne")
 script = ExtResource("1_21ked")
-ScoreLabel = NodePath("MarginContainer/HBoxContainer/ScoreLabel")
+ScoreLabel = NodePath("MarginContainer/VBoxContainer/ScoreLabel")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=308338690]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=248045275]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=336898487]
 layout_mode = 2
 alignment = 1
 
-[node name="Label" type="Label" parent="MarginContainer/HBoxContainer" unique_id=1789040725]
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1789040725]
 layout_mode = 2
-text = "Score: "
+text = "Your Score"
+label_settings = SubResource("LabelSettings_21ked")
 
-[node name="ScoreLabel" type="Label" parent="MarginContainer/HBoxContainer" unique_id=1360082654]
+[node name="ScoreLabel" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1360082654]
 layout_mode = 2

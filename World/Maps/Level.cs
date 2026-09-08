@@ -1,9 +1,12 @@
 using System.Collections.Generic;
+using System.Linq;
 using Game.Common.GameEvents.Global;
 using Game.Common.Persistence;
 using Game.Entities.Enemies;
+using Game.Entities.Items;
 using Game.Entities.Player;
 using Game.UI;
+using Game.UI.HUD;
 using Game.Utilities.Autoloads;
 using Game.Utilities.Loaded;
 using Game.World.Maps;
@@ -18,6 +21,9 @@ public partial class Level : Node, ISaveable
     public Player Player { get; set; }
 
     [Export]
+    public HUDManager HUD { get; set; }
+
+    [Export]
     public TileMapLayer Map { get; set; }
 
     [Export]
@@ -26,6 +32,7 @@ public partial class Level : Node, ISaveable
     [Export]
     public TeleportArea RightArea { get; set; }
     public int Score { get; private set; } = 0;
+    public int CurrentLevel { get; private set; } = 1;
     public List<Vector2I> GateCoords { get; init; } = [new(14, 20), new(15, 20)];
 
     public override void _Ready()
@@ -36,10 +43,17 @@ public partial class Level : Node, ISaveable
             GD.Print($"Cell {cellCoord} deleted");
         }
 
-        // UIManager.Instance.HUDManager.ResetHUD(Score);
-        // UIManager.Instance.HUDManager.ShowHUD();
+        Callable
+            .From(() =>
+            {
+                foreach (var coin in GetTree().GetNodesInGroup("SmallCoins").Cast<SmallCoin>())
+                {
+                    coin.CoinCollected += OnCoinCollected;
+                }
+            })
+            .CallDeferred();
 
-        EventBus.Instance.EnemyDied += OnEnemyDied;
+        HUD.ShowHUD();
     }
 
     public override void _PhysicsProcess(double delta)
@@ -79,7 +93,18 @@ public partial class Level : Node, ISaveable
 
         var instance = LoadedScenes.GameoverScreen.Instantiate<UIScreen>();
         UIManager.Instance.Push(instance);
-        UIManager.Instance.HUDManager.Hide();
+        HUD.HideHUD();
+    }
+
+    public void OnCoinCollected(CoinCollected context)
+    {
+        IncreaseScore(context.Score);
+
+        GD.Print("Currnet Score: ", Score);
+
+        var newContext = new ScoreChanged() { Score = Score };
+
+        EventBus.Instance.ScoreChanged?.Invoke(newContext);
     }
 
     public void Save()
@@ -87,6 +112,10 @@ public partial class Level : Node, ISaveable
         SaveManager.Instance.GameSaveState.Highscore = Mathf.Max(
             SaveManager.Instance.GameSaveState.Highscore,
             Score
+        );
+        SaveManager.Instance.GameSaveState.HighestLevel = Mathf.Max(
+            SaveManager.Instance.GameSaveState.HighestLevel,
+            CurrentLevel
         );
     }
 }

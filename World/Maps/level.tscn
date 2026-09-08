@@ -1,6 +1,7 @@
 [gd_scene format=4 uid="uid://cnlby2y1tets7"]
 
 [ext_resource type="Script" uid="uid://bmihuwnxhfayi" path="res://World/Maps/Level.cs" id="1_egqyd"]
+[ext_resource type="PackedScene" uid="uid://dh7hvf1lg38oc" path="res://UI/HUD/hud_manager.tscn" id="2_1s88j"]
 [ext_resource type="TileSet" uid="uid://yujgnhryffas" path="res://World/Maps/map_tileset.tres" id="2_egqyd"]
 [ext_resource type="Script" uid="uid://bj5dmmgc16vw6" path="res://World/Maps/Map.cs" id="4_4xocj"]
 [ext_resource type="PackedScene" uid="uid://b2kdg8lqxldi5" path="res://Entities/Player/player.tscn" id="4_j6pnr"]
@@ -22,12 +23,15 @@ border_width_right = 16
 border_width_bottom = 16
 border_color = Color(0.2784314, 0.23137255, 0.47058824, 1)
 
-[node name="Level" type="Node2D" unique_id=1402249254 node_paths=PackedStringArray("Player", "Map", "LeftArea", "RightArea")]
+[node name="Level" type="Node2D" unique_id=1402249254 node_paths=PackedStringArray("Player", "HUD", "Map", "LeftArea", "RightArea")]
 script = ExtResource("1_egqyd")
 Player = NodePath("Player")
+HUD = NodePath("HUDManager")
 Map = NodePath("Map")
 LeftArea = NodePath("LeftTeleportArea")
 RightArea = NodePath("RightTeleportArea")
+
+[node name="HUDManager" parent="." unique_id=2124855674 instance=ExtResource("2_1s88j")]
 
 [node name="Map" type="TileMapLayer" parent="." unique_id=1559033720]
 position = Vector2(0, -1)
@@ -264,6 +268,3 @@ Destination = NodePath("../RightTeleportArea")
 position = Vector2(488, 343)
 rotation = 3.1415927
 Destination = NodePath("../LeftTeleportArea")
-
-[node name="Camera2D" type="Camera2D" parent="." unique_id=410704391]
-zoom = Vector2(0.5, 0.5)

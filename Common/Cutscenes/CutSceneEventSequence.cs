@@ -3,16 +3,17 @@ using Godot;
 
 namespace Game.Common.Cutscenes;
 
-public partial class CutsceneSequence : CutSceneEvent
+[GlobalClass]
+public partial class CutsceneEventSequence : CutsceneEvent
 {
     [Export]
-    public CutSceneEvent[] EventList { get; set; } = [];
+    public CutsceneEvent[] EventList { get; set; } = [];
 
-    public override async Task Execute()
+    public override async Task Execute(CutsceneContext context)
     {
         foreach (var cutsceneEvent in EventList)
         {
-            await cutsceneEvent.Execute();
+            await cutsceneEvent.Execute(context);
         }
     }
 }

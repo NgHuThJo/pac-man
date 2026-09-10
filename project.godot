@@ -20,6 +20,8 @@ config/icon="res://icon.svg"
 SceneManager="*uid://dauoyxolarnjr"
 AudioManager="*uid://dtpgme8fnw3jy"
 EventBus="*uid://cnhkw4frkkhdu"
+InputManager="*uid://wymsuk1jjar1"
+CutsceneManager="*uid://ci3ue0d7y7m5q"
 
 [display]
 

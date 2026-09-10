@@ -3,6 +3,7 @@ using System.Linq;
 using Game.Common.Components;
 using Game.Common.Components.AreaBoxes.Hurtbox;
 using Game.Common.Components.Health;
+using Game.Utilities.Autoloads;
 using Game.World.Maps;
 using Godot;
 
@@ -92,7 +93,7 @@ public partial class Player : CharacterBody2D
         return true;
     }
 
-    public void Turn(Vector2 direction)
+    public void TurnArrow(Vector2 direction)
     {
         if (direction == Vector2.Zero)
         {

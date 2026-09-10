@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Godot;
 
@@ -5,7 +6,6 @@ namespace Game.Utilities.Autoloads;
 
 public enum InputState
 {
-    None,
     Player,
     Cutscene,
 }
@@ -18,6 +18,20 @@ public partial class InputManager : Node
     public override void _Ready()
     {
         Instance = this;
+        Push(InputState.Player);
+    }
+
+    public InputState Current
+    {
+        get
+        {
+            if (!Stack.TryPeek(out var inputState))
+            {
+                throw new InvalidOperationException("Input state stack is empty");
+            }
+
+            return inputState;
+        }
     }
 
     public void Push(InputState newInputState)
@@ -29,7 +43,7 @@ public partial class InputManager : Node
     {
         if (Stack.Count == 0)
         {
-            GD.PushError($"No element left in input state stack");
+            GD.PushError("No element to pop in input state stack");
             return;
         }
 

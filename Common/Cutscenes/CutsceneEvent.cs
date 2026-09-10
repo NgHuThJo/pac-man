@@ -3,7 +3,7 @@ using Godot;
 
 namespace Game.Common.Cutscenes;
 
-public abstract partial class CutSceneEvent : Resource
+public abstract partial class CutsceneEvent : Resource
 {
-    public abstract Task Execute();
+    public abstract Task Execute(CutsceneContext context);
 }

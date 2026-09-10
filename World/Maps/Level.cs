@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using Game.Common.Cutscenes;
 using Game.Common.GameEvents.Global;
 using Game.Common.Persistence;
 using Game.Entities.Enemies;
@@ -27,21 +28,26 @@ public partial class Level : Node, ISaveable
     public TileMapLayer Map { get; set; }
 
     [Export]
+    public AnimationPlayer AnimationPlayer { get; set; }
+
+    [Export]
     public TeleportArea LeftArea { get; set; }
 
     [Export]
     public TeleportArea RightArea { get; set; }
+
+    [Export]
+    public CutsceneEventSequence Cutscene { get; set; }
     public int Score { get; private set; } = 0;
     public int CurrentLevel { get; private set; } = 1;
+    public string CurrentLevelAnimation { get; set; } = "Start";
     public List<Vector2I> GateCoords { get; init; } = [new(14, 20), new(15, 20)];
 
     public override void _Ready()
     {
-        foreach (var cellCoord in GateCoords)
-        {
-            Map.SetCell(cellCoord);
-            GD.Print($"Cell {cellCoord} deleted");
-        }
+        var context = new CutsceneContext { Level = this };
+
+        CutsceneManager.Instance.Play(Cutscene, context);
 
         Callable
             .From(() =>

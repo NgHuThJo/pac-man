@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="CutsceneEventSequence" format=3 uid="uid://beru7ookxf487"]
+
+[ext_resource type="Script" uid="uid://db0sntmphocrj" path="res://Common/Cutscenes/PlayAnimationCutsceneEvent.cs" id="1_ju33u"]
+[ext_resource type="Script" uid="uid://dld0acgqnou8d" path="res://Common/Cutscenes/OpenGateCutsceneEvent.cs" id="2_ilfes"]
+[ext_resource type="Script" uid="uid://8nvaxa1ghmqa" path="res://Common/Cutscenes/CutsceneEventSequence.cs" id="3_y3jwb"]
+
+[sub_resource type="Resource" id="Resource_ju33u"]
+script = ExtResource("1_ju33u")
+metadata/_custom_type_script = "uid://db0sntmphocrj"
+
+[sub_resource type="Resource" id="Resource_ilfes"]
+script = ExtResource("2_ilfes")
+metadata/_custom_type_script = "uid://dld0acgqnou8d"
+
+[resource]
+script = ExtResource("3_y3jwb")
+EventList = [SubResource("Resource_ju33u"), SubResource("Resource_ilfes")]
+metadata/_custom_type_script = "uid://8nvaxa1ghmqa"

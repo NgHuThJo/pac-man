@@ -12,8 +12,17 @@ public partial class CutsceneManager : Node
         Instance = this;
     }
 
-    public static async void PlayCutscene(CutsceneSequence sequence)
+    public async void Play(CutsceneEventSequence sequence, CutsceneContext context)
     {
-        await sequence.Execute();
+        try
+        {
+            InputManager.Instance.Push(InputState.Cutscene);
+            await sequence.Execute(context);
+        }
+        finally
+        {
+            GD.Print("player start");
+            InputManager.Instance.Pop();
+        }
     }
 }

@@ -1,4 +1,5 @@
 using Game.Common.StateMachines;
+using Game.Utilities.Autoloads;
 using Game.World.Maps;
 using Godot;
 
@@ -33,6 +34,11 @@ public class PlayerIdleState(Player player, PlayerStateMachine stateMachine)
 {
     public override void PhysicsUpdate(double delta)
     {
+        if (InputManager.Instance.Current != InputState.Player)
+        {
+            return;
+        }
+
         var direction = Player.Controller.MovementDirection;
 
         if (direction != Vector2.Zero)
@@ -48,6 +54,11 @@ public class PlayerMovingState(Player player, PlayerStateMachine stateMachine)
 {
     public override void PhysicsUpdate(double delta)
     {
+        if (InputManager.Instance.Current != InputState.Player)
+        {
+            return;
+        }
+
         if (Player.CanMoveInDirection(Player.NextMovementDirection))
         {
             Player.CurrentMovementDirection = Player.NextMovementDirection;
@@ -56,7 +67,7 @@ public class PlayerMovingState(Player player, PlayerStateMachine stateMachine)
         if (Player.Controller.MovementDirection != Vector2.Zero)
         {
             Player.NextMovementDirection = Player.Controller.MovementDirection;
-            Player.Turn(Player.NextMovementDirection);
+            Player.TurnArrow(Player.NextMovementDirection);
         }
 
         Player.Movement.ApplyVelocity(Player.CurrentMovementDirection);

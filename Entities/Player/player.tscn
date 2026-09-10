@@ -51,14 +51,14 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:flip_h")
+tracks/1/path = NodePath("Sprite2D:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
+"update": 0,
+"values": [0.0]
 }
 
 [sub_resource type="Animation" id="Animation_nhbkt"]
@@ -78,6 +78,36 @@ tracks/0/keys = {
 "values": [0]
 }
 
+[sub_resource type="Animation" id="Animation_iplt1"]
+resource_name = "move_down"
+length = 0.4
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.5707963267948966]
+}
+
 [sub_resource type="Animation" id="Animation_x1y6q"]
 resource_name = "move_left"
 length = 0.4
@@ -86,26 +116,26 @@ step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:flip_h")
+tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [3.141592653589793]
 }
 
 [sub_resource type="Animation" id="Animation_ap3xn"]
@@ -116,38 +146,73 @@ step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:flip_h")
+tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_owvpp"]
+resource_name = "move_up"
+length = 0.4
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-1.5707963267948966]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0poeq"]
 _data = {
 &"RESET": SubResource("Animation_r8fok"),
 &"idle": SubResource("Animation_nhbkt"),
+&"move_down": SubResource("Animation_iplt1"),
 &"move_left": SubResource("Animation_x1y6q"),
-&"move_right": SubResource("Animation_ap3xn")
+&"move_right": SubResource("Animation_ap3xn"),
+&"move_up": SubResource("Animation_owvpp")
 }
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_xr8lj"]
 animation = &"idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_x1y6q"]
+animation = &"move_down"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_r8fok"]
 animation = &"move_left"
@@ -155,44 +220,67 @@ animation = &"move_left"
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_nhbkt"]
 animation = &"move_right"
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ap3xn"]
+animation = &"move_up"
+
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_vskfa"]
 advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_pjcup"]
 advance_mode = 2
-advance_expression = "Controller.MovementDirection.x < 0"
+advance_expression = "CurrentMovementDirection.x < 0"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_0poeq"]
 advance_mode = 2
-advance_expression = "Controller.MovementDirection.x == 0"
+advance_expression = "CurrentMovementDirection.x == 0"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ppdlg"]
 advance_mode = 2
-advance_expression = "Controller.MovementDirection.x > 0"
+advance_expression = "CurrentMovementDirection.x > 0"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_v7p16"]
 advance_mode = 2
-advance_expression = "Controller.MovementDirection.x == 0"
+advance_expression = "CurrentMovementDirection.x == 0"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_a8wow"]
 advance_mode = 2
-advance_expression = "Controller.MovementDirection.x > 0"
+advance_expression = "CurrentMovementDirection.x > 0"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_avsg8"]
 advance_mode = 2
-advance_expression = "Controller.MovementDirection.x < 0"
+advance_expression = "CurrentMovementDirection.x < 0"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_iplt1"]
+advance_mode = 2
+advance_expression = "CurrentMovementDirection.y < 0"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_owvpp"]
+advance_mode = 2
+advance_expression = "CurrentMovementDirection.y == 0"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_xr8lj"]
+advance_mode = 2
+advance_expression = "CurrentMovementDirection.y == 0"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_r8fok"]
+advance_mode = 2
+advance_expression = "CurrentMovementDirection.y > 0"
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_avsg8"]
 states/End/position = Vector2(1089, 176)
 states/Start/position = Vector2(58, 176)
 states/idle/node = SubResource("AnimationNodeAnimation_xr8lj")
-states/idle/position = Vector2(199.61111, 176)
+states/idle/position = Vector2(481.59143, 233)
+states/move_down/node = SubResource("AnimationNodeAnimation_x1y6q")
+states/move_down/position = Vector2(600.59143, 337.60083)
 states/move_left/node = SubResource("AnimationNodeAnimation_r8fok")
-states/move_left/position = Vector2(422.6111, 95.554794)
+states/move_left/position = Vector2(263.61108, 280.5548)
 states/move_right/node = SubResource("AnimationNodeAnimation_nhbkt")
-states/move_right/position = Vector2(417.61108, 279.5548)
-transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_vskfa"), "idle", "move_left", SubResource("AnimationNodeStateMachineTransition_pjcup"), "move_left", "idle", SubResource("AnimationNodeStateMachineTransition_0poeq"), "idle", "move_right", SubResource("AnimationNodeStateMachineTransition_ppdlg"), "move_right", "idle", SubResource("AnimationNodeStateMachineTransition_v7p16"), "move_left", "move_right", SubResource("AnimationNodeStateMachineTransition_a8wow"), "move_right", "move_left", SubResource("AnimationNodeStateMachineTransition_avsg8")]
-graph_offset = Vector2(18.591402, 14.554792)
+states/move_right/position = Vector2(692.6111, 188.55481)
+states/move_up/node = SubResource("AnimationNodeAnimation_ap3xn")
+states/move_up/position = Vector2(464.59143, 77.600815)
+transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_vskfa"), "idle", "move_left", SubResource("AnimationNodeStateMachineTransition_pjcup"), "move_left", "idle", SubResource("AnimationNodeStateMachineTransition_0poeq"), "idle", "move_right", SubResource("AnimationNodeStateMachineTransition_ppdlg"), "move_right", "idle", SubResource("AnimationNodeStateMachineTransition_v7p16"), "move_left", "move_right", SubResource("AnimationNodeStateMachineTransition_a8wow"), "move_right", "move_left", SubResource("AnimationNodeStateMachineTransition_avsg8"), "idle", "move_up", SubResource("AnimationNodeStateMachineTransition_iplt1"), "move_up", "idle", SubResource("AnimationNodeStateMachineTransition_owvpp"), "move_down", "idle", SubResource("AnimationNodeStateMachineTransition_xr8lj"), "idle", "move_down", SubResource("AnimationNodeStateMachineTransition_r8fok")]
+graph_offset = Vector2(-156.4086, 22.600815)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wgnfr"]
 size = Vector2(16, 16)

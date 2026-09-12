@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://cdgm08dxfndng"]
+
+[ext_resource type="Texture2D" uid="uid://b1mgve1bf5i8y" path="res://Assets/visual/PacManAssets-Items.png" id="1_ayfgv"]
+[ext_resource type="Script" uid="uid://dvc1vlvsm2n2f" path="res://Entities/Items/BigCoin.cs" id="1_c4gjy"]
+[ext_resource type="Resource" uid="uid://c6i51jt6l8bp7" path="res://Entities/Items/big_coin.tres" id="2_6m67i"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ebkce"]
+radius = 5.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vyppc"]
+atlas = ExtResource("1_ayfgv")
+region = Rect2(16, 16, 16, 16)
+
+[node name="BigCoin" type="StaticBody2D" unique_id=2011809560 node_paths=PackedStringArray("DetectionBox") groups=["BigCoins"]]
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("1_c4gjy")
+DetectionBox = NodePath("Area2D")
+Data = ExtResource("2_6m67i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2042123158]
+shape = SubResource("CircleShape2D_ebkce")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1685309783]
+texture = SubResource("AtlasTexture_vyppc")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=103754973]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D" unique_id=297831800]
+shape = SubResource("CircleShape2D_ebkce")

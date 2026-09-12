@@ -31,6 +31,9 @@ public partial class Level : Node, ISaveable
     public AnimationPlayer AnimationPlayer { get; set; }
 
     [Export]
+    public GhostController GhostController { get; set; }
+
+    [Export]
     public TeleportArea LeftArea { get; set; }
 
     [Export]
@@ -54,10 +57,15 @@ public partial class Level : Node, ISaveable
             {
                 foreach (var coin in GetTree().GetNodesInGroup("SmallCoins").Cast<SmallCoin>())
                 {
-                    coin.CoinCollected += OnCoinCollected;
+                    coin.SmallCoinCollected += OnSmallCoinCollected;
                 }
             })
             .CallDeferred();
+
+        foreach (var coin in GetTree().GetNodesInGroup("BigCoins").Cast<BigCoin>())
+        {
+            coin.BigCoinCollected += OnBigCoinCollected;
+        }
 
         HUD.ShowHUD();
     }
@@ -102,13 +110,26 @@ public partial class Level : Node, ISaveable
         HUD.HideHUD();
     }
 
-    public void OnCoinCollected(CoinCollected context)
+    public void OnSmallCoinCollected(CoinCollected context)
     {
         IncreaseScore(context.Score);
 
-        GD.Print("Currnet Score: ", Score);
+        GD.Print("Current Score: ", Score);
 
         var newContext = new ScoreChanged() { Score = Score };
+
+        EventBus.Instance.ScoreChanged?.Invoke(newContext);
+    }
+
+    public void OnBigCoinCollected(CoinCollected context)
+    {
+        IncreaseScore(context.Score);
+
+        GD.Print("Current Score: ", Score);
+
+        var newContext = new ScoreChanged() { Score = Score };
+
+        GhostController.ChangeToFrightened();
 
         EventBus.Instance.ScoreChanged?.Invoke(newContext);
     }

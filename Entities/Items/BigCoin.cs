@@ -5,9 +5,9 @@ using Godot;
 
 namespace Game.Entities.Items;
 
-public partial class SmallCoin : StaticBody2D
+public partial class BigCoin : StaticBody2D
 {
-    public event Action<CoinCollected> SmallCoinCollected;
+    public event Action<CoinCollected> BigCoinCollected;
 
     [Export]
     public Area2D DetectionBox { get; private set; }
@@ -31,7 +31,7 @@ public partial class SmallCoin : StaticBody2D
             QueueFree();
 
             var context = new CoinCollected() { Score = Data.Points };
-            SmallCoinCollected?.Invoke(context);
+            BigCoinCollected?.Invoke(context);
         }
     }
 }

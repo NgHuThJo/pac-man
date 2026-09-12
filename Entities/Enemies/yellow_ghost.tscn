@@ -1,18 +1,22 @@
-[gd_scene format=3 uid="uid://b6guiqsg5infp"]
+[gd_scene format=3 uid="uid://drlvl6s0bt6uw"]
 
-[ext_resource type="Script" uid="uid://dgs4umnhxf7eb" path="res://Entities/Enemies/RedGhost.cs" id="1_uqtrf"]
-[ext_resource type="Texture2D" uid="uid://jdb8ivibkh5d" path="res://Assets/visual/PacManAssets-Ghosts.png" id="1_vucf1"]
-[ext_resource type="Resource" uid="uid://cclhecsoeewsh" path="res://Entities/Enemies/enemy_movement.tres" id="2_xrsnj"]
-[ext_resource type="Script" uid="uid://dki05byesg3ky" path="res://Entities/Enemies/EnemyData.cs" id="3_tsdfc"]
-[ext_resource type="PackedScene" uid="uid://bdwy5b0fyeqoh" path="res://Common/Components/movement_component.tscn" id="5_oyqcg"]
+[ext_resource type="Script" uid="uid://cwdy5awuotxgi" path="res://Entities/Enemies/YellowGhost.cs" id="1_msep3"]
+[ext_resource type="Resource" uid="uid://cclhecsoeewsh" path="res://Entities/Enemies/enemy_movement.tres" id="2_86u7j"]
+[ext_resource type="Script" uid="uid://dki05byesg3ky" path="res://Entities/Enemies/EnemyData.cs" id="3_hk7tx"]
+[ext_resource type="Texture2D" uid="uid://jdb8ivibkh5d" path="res://Assets/visual/PacManAssets-Ghosts.png" id="4_a3rik"]
+[ext_resource type="PackedScene" uid="uid://bdwy5b0fyeqoh" path="res://Common/Components/movement_component.tscn" id="5_5b0w1"]
 
-[sub_resource type="Resource" id="Resource_msep3"]
-script = ExtResource("3_tsdfc")
-MovementData = ExtResource("2_xrsnj")
-ScatterPosition = Vector2i(448, 208)
+[sub_resource type="Resource" id="Resource_ns5va"]
+script = ExtResource("3_hk7tx")
+MovementData = ExtResource("2_86u7j")
+ScatterPosition = Vector2i(48, 528)
 metadata/_custom_type_script = "uid://dki05byesg3ky"
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_xrsnj"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_471ou"]
+atlas = ExtResource("4_a3rik")
+region = Rect2(0, 160, 128, 32)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_syv48"]
 radius = 4.0
 
 [sub_resource type="Animation" id="Animation_uqtrf"]
@@ -54,23 +58,22 @@ _data = {
 &"idle": SubResource("Animation_14cjb")
 }
 
-[node name="RedGhost" type="CharacterBody2D" unique_id=516164900 node_paths=PackedStringArray("Navigation", "Movement")]
+[node name="YellowGhost" type="CharacterBody2D" unique_id=516164900 node_paths=PackedStringArray("Navigation", "Movement")]
 collision_layer = 4
 collision_mask = 3
-script = ExtResource("1_uqtrf")
+script = ExtResource("1_msep3")
 Navigation = NodePath("NavigationAgent2D")
 Movement = NodePath("MovementComponent")
-Data = SubResource("Resource_msep3")
+Data = SubResource("Resource_ns5va")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=477937542]
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("1_vucf1")
+texture = SubResource("AtlasTexture_471ou")
 hframes = 4
-vframes = 10
 region_rect = Rect2(0, 0, 128, 32)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1741521572]
-shape = SubResource("CircleShape2D_xrsnj")
+shape = SubResource("CircleShape2D_syv48")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1914999667]
 libraries/ = SubResource("AnimationLibrary_jiogr")
@@ -81,5 +84,5 @@ debug_use_custom = true
 debug_path_custom_color = Color(1, 0.26666668, 0.40392157, 1)
 debug_path_custom_line_width = 1.0
 
-[node name="MovementComponent" parent="." unique_id=1756584285 node_paths=PackedStringArray("_body") instance=ExtResource("5_oyqcg")]
+[node name="MovementComponent" parent="." unique_id=1756584285 node_paths=PackedStringArray("_body") instance=ExtResource("5_5b0w1")]
 _body = NodePath("..")

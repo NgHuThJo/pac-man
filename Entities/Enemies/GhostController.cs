@@ -7,6 +7,7 @@ public partial class GhostController : Node
 {
     [Export]
     private Timer ModeTimer { get; set; }
+    private float FrightenedDuration = 6f;
     private List<GhostModeData> Sequence { get; init; } =
     [
         new(GhostMode.Scatter, 7f),
@@ -27,6 +28,27 @@ public partial class GhostController : Node
     public override void _ExitTree()
     {
         ModeTimer.Timeout -= OnTimeout;
+    }
+
+    public async void ChangeToFrightened()
+    {
+        ModeTimer.Stop();
+
+        CurrentMode = GhostMode.Frightened;
+        ModeTimer.WaitTime = FrightenedDuration;
+
+        ModeTimer.Start();
+
+        GD.Print("before change to frightened");
+
+        await ToSignal(ModeTimer, Timer.SignalName.Timeout);
+
+        GD.Print("after change to frightened");
+
+        var step = Sequence[CurrentIndex];
+        ModeTimer.WaitTime = step.Duration;
+        CurrentMode = step.Mode;
+        ModeTimer.Start();
     }
 
     private void ExecuteStep()
